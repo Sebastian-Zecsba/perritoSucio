@@ -1,21 +1,25 @@
-"use client"
-
-import Link from "next/link";
+"use client";
 
 export default function ButtonWhatsapp() {
-
   const handleClick = () => {
-    if (typeof window !== 'undefined' && window.fbq) {
-      window.fbq("track", "WhatsAppClick"); 
+    // Verifica que estés en cliente y que fbq esté definido
+    if (typeof window !== "undefined" && (window as any).fbq) {
+      (window as any).fbq("track", "WhatsAppClick");
     }
-    window.open("https://wa.me/123456789", "_blank");
+    // Abre WhatsApp en otra pestaña
+    window.open("https://wa.link/1pu11v", "_blank");
   };
 
   return (
     <div className="mt-4">
-        <Link href="https://wa.link/1pu11v" target="_blank" className="bg-green-500 p-4 text-xl rounded" passHref>
-            Ver catálogo por WhatsApp
-        </Link>
+      <a
+        onClick={handleClick}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="bg-green-500 p-4 text-xl rounded text-white cursor-pointer"
+      >
+        Ver catálogo por WhatsApp
+      </a>
     </div>
-  )
+  );
 }

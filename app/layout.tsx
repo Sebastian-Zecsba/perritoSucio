@@ -1,17 +1,6 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script"; 
 import "./globals.css";
-import Script from "next/script";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -29,10 +18,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Script del Pixel de Facebook */}
+        {/* Pixel de Facebook con <Script> */}
         <Script
           id="fb-pixel"
-          strategy="afterInteractive" 
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               !function(f,b,e,v,n,t,s)
@@ -42,26 +31,24 @@ export default function RootLayout({
               n.queue=[];t=b.createElement(e);t.async=!0;
               t.src=v;s=b.getElementsByTagName(e)[0];
               s.parentNode.insertBefore(t,s)}
-              (window, document,'script',
-              'https://connect.facebook.net/en_US/fbevents.js');
+              (window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
               fbq('init', '${FB_PIXEL_ID}');
               fbq('track', 'PageView');
             `,
           }}
         />
+        {/* Etiqueta <noscript> para visitantes sin JS */}
         <noscript>
           <img
             height="1"
             width="1"
             style={{ display: "none" }}
-            src={`https://www.facebook.com/tr?id=${FB_PIXEL_ID}&ev=PageView&noscript=1`}
+            src="https://www.facebook.com/tr?id=996373986005786&ev=PageView&noscript=1"
             alt="facebook pixel"
           />
         </noscript>
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body>
         {children}
       </body>
     </html>
