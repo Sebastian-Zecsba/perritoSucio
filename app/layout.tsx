@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script"; 
 import "./globals.css";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -39,7 +40,7 @@ export default function RootLayout({
         />
         {/* Etiqueta <noscript> para visitantes sin JS */}
         <noscript>
-          <img
+          <Image
             height="1"
             width="1"
             style={{ display: "none" }}
