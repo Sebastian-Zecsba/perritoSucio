@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import Link from 'next/link'
+import ButtonWhatsapp from './ButtonWhatsapp'
 
 export default function MainImage() {
   return (
@@ -26,9 +26,7 @@ export default function MainImage() {
           Para personas que valoran la comodidad y el estilo en su día a día
         </h2>
 
-        <Link href="https://wa.me/123456789" className="bg-green-500 p-4 text-xl rounded" passHref>
-            Ver catálogo por WhatsApp
-        </Link>
+        <ButtonWhatsapp />
       </div>
     </section>
   )
